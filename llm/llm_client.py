@@ -1,12 +1,14 @@
 import requests
+from core.config import config
+from core.logger import logger
 
 
 class LLMClient:
 
-    def __init__(self, model="mistral"):
+    def __init__(self, model=None):
 
-        self.model = model
-        self.url = "http://localhost:11434/api/generate"
+        self.model = model or config.llm_model
+        self.url = config.llm_endpoint
 
     def generate(self, prompt):
 

@@ -1,5 +1,6 @@
 from core.events import Events
 from core.event import Event
+from core.logger import logger
 
 
 class PermissionEngine:
@@ -16,9 +17,9 @@ class PermissionEngine:
 
         if decision["requires_permission"]:
 
-            print("\nAssistant:")
-            print(decision["reasoning"])
-            print("Do you approve? (yes/no)")
+            logger.info("\nAssistant:")
+            logger.info(decision["reasoning"])
+            logger.info("Do you approve? (yes/no)")
 
             answer = input("> ")
 

@@ -23,3 +23,5 @@ class Events:
     TTS_SPEAK = "tts_speak"
 
     INTERRUPT = "interrupt"
+
+    BACKCHANNEL = "backchannel"

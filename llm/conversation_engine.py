@@ -1,9 +1,12 @@
 from core.events import Events
 from core.event import Event
+from core.logger import logger
 
 from llm.llm_client import LLMClient
 from llm.prompt_templates import SYSTEM_PROMPT
 from llm.reasoning_parser import ReasoningParser
+from memory.memory_manager import MemoryManager
+from environment.context_detector import ContextDetector
 
 
 class ConversationEngine:
@@ -14,6 +17,9 @@ class ConversationEngine:
         self.llm = LLMClient()
         self.parser = ReasoningParser()
         self.history = []
+        self.memory = MemoryManager()
+        self.context = ContextDetector()
+
 
         event_bus.subscribe(
             Events.SPEECH_TRANSCRIBED,
@@ -25,15 +31,19 @@ class ConversationEngine:
         user_text = event.payload["text"]
 
         self.history.append(user_text)
+        self.memory.store(user_text)
+        context = self.context.get_context()
 
         prompt = SYSTEM_PROMPT + "\nUser command:\n" + user_text
+
+        memories = self.memory.retrieve(user_text)
 
         llm_output = self.llm.generate(prompt)
 
         decision = self.parser.parse(llm_output)
 
-        print("\nAssistant reasoning:")
-        print(decision["reasoning"])
+        logger.info("\nAssistant reasoning:")
+        logger.info(decision["reasoning"])
 
         await self.event_bus.publish(
             Event(
