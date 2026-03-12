@@ -1,0 +1,9 @@
+faster-whisper
+sounddevice
+numpy
+pydantic
+asyncio
+uvicorn
+fastapi
+coqui-tts
+sympy
