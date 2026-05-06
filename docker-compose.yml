@@ -1,0 +1,153 @@
+version: '3.8'
+
+services:
+  voiceos:
+    build: .
+    container_name: voiceos-agent-system
+    restart: unless-stopped
+    
+    # Environment variables
+    environment:
+      - VOICEOS_ENV=production
+      - PYTHONPATH=/app
+      - DISPLAY=:99  # Virtual display for GUI applications
+    
+    # Volumes for persistence
+    volumes:
+      - ./workspace:/app/workspace
+      - ./memory:/app/memory
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./config:/app/config
+      - voiceos_data:/app/data
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw  # Display for GUI applications
+    
+    # Port mapping
+    ports:
+      - "8000:8000"  # Potential web interface
+    
+    # Device access for system control
+    devices:
+      - /dev/snd:/dev/snd  # Audio devices
+    
+    # Capabilities for system control
+    cap_add:
+      - SYS_ADMIN  # Required for some system operations
+    
+    # Security settings
+    security_opt:
+      - no-new-privileges:true
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+    
+    # Network configuration
+    networks:
+      - voiceos-network
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "/app/healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: Database for persistent storage
+  voiceos-db:
+    image: postgres:13-alpine
+    container_name: voiceos-database
+    restart: unless-stopped
+    
+    environment:
+      - POSTGRES_DB=voiceos
+      - POSTGRES_USER=voiceos
+      - POSTGRES_PASSWORD=voiceos123
+    
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    
+    networks:
+      - voiceos-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+
+  # Optional: Redis for caching
+  voiceos-cache:
+    image: redis:6-alpine
+    container_name: voiceos-redis
+    restart: unless-stopped
+    
+    command: redis-server --appendonly yes
+    
+    volumes:
+      - redis_data:/data
+    
+    networks:
+      - voiceos-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # Optional: Web interface (if implemented)
+  voiceos-web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: voiceos-web
+    restart: unless-stopped
+    
+    ports:
+      - "3000:3000"
+    
+    environment:
+      - REACT_APP_API_URL=http://voiceos:8000
+    
+    depends_on:
+      - voiceos
+    
+    networks:
+      - voiceos-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+volumes:
+  voiceos_data:
+    driver: local
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  voiceos-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

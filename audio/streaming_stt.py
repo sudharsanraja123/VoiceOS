@@ -1,5 +1,5 @@
 from faster_whisper import WhisperModel
-from core.events import Events
+from core.events.events import Events
 from core.event import Event
 
 

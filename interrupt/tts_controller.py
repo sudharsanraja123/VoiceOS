@@ -1,5 +1,5 @@
 import threading
-from core.events import Events
+from core.events.events import Events
 from core.event import Event
 from core.logger import logger
 

@@ -1,5 +1,5 @@
 import time
-from core.events import Events
+from core.events.events import Events
 from core.event import Event
 
 from listener.response_selector import ResponseSelector

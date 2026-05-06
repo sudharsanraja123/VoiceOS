@@ -1,4 +1,4 @@
-from core.events import Events
+from core.events.events import Events
 from listener.speech_activity import SpeechActivityDetector
 
 

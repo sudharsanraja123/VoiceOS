@@ -1,439 +1,314 @@
-<!-- HERO BANNER -->
-
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00c6ff,100:0072ff&height=220&section=header&text=VoiceOS&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=38"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=220&section=header&text=VoiceOS&fontSize=60&fontColor=ffffff"/>
+</p>
+
+<h1 align="center">🎙️ VoiceOS</h1>
+<p align="center">
+A Voice + CLI Driven Multi-Agent Operating System with Autonomous AI Capabilities
 </p>
 
 <p align="center">
-A Real-Time Voice Driven Operating System built with Streaming AI Pipelines
-</p>
-
-<p align="center">
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-![AI](https://img.shields.io/badge/AI-Voice%20OS-purple)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Local AI](https://img.shields.io/badge/Local-AI-orange)
-![CPU Friendly](https://img.shields.io/badge/CPU-Optimized-red)
-
+<img src="https://img.shields.io/badge/AI-Multi--Agent-blue"/>
+<img src="https://img.shields.io/badge/Voice-Enabled-purple"/>
+<img src="https://img.shields.io/badge/Docker-Ready-blue"/>
+<img src="https://img.shields.io/badge/Local-AI-green"/>
+<img src="https://img.shields.io/badge/License-MIT-orange"/>
 </p>
 
 ---
 
-# 🎙️ VoiceOS
+## 🚀 Overview
 
-VoiceOS is a **real-time voice-driven operating system interface** that allows users to interact with their computer using natural language.
+VoiceOS is a **next-generation AI operating system interface** that combines:
 
-Unlike traditional assistants, VoiceOS is built as a **modular AI system architecture** combining:
+* 🎤 Real-time voice interaction
+* 🧠 Multi-agent reasoning system
+* 🤖 Autonomous agent execution
+* 🔐 Permission-based safety architecture
+* 🐳 Docker-based isolated runtime
 
-• Streaming Speech Recognition
-• LLM Reasoning Engine
-• Event Driven System Architecture
-• Tool Execution Framework
-• Web Research Engine
-• OS Automation Layer
-• Real-Time Conversational Feedback
+VoiceOS evolves beyond traditional assistants into a:
 
-The system is designed to run **fully locally on CPU hardware** with optimized streaming pipelines.
+> **Voice-Controlled, Multi-Agent, Autonomous AI System**
 
 ---
 
-# ✨ Core Capabilities
+## ✨ Key Features
 
-### 🎤 Real-Time Speech Interface
+### 🎤 Voice + CLI Interaction
 
-Continuous speech recognition using streaming transcription.
-
-### 🧠 LLM Reasoning Engine
-
-Interprets commands, plans actions, and decides which tools to execute.
-
-### 🔎 Web Research Agent
-
-VoiceOS can search the web, analyze sources, and summarize insights.
-
-### 🖥️ OS Automation
-
-Control your computer using natural voice commands.
-
-Examples:
-
-Open applications
-Type text
-Switch windows
-Clipboard automation
-
-### 💬 Conversational Feedback
-
-Back-channel listening makes the assistant behave more naturally.
-
-Example:
-
-```
-User speaking...
-VoiceOS: "mm-hmm"
-VoiceOS: "I see"
-```
+* Real-time speech input (STT)
+* Streaming responses (TTS)
+* CLI fallback for development and control
 
 ---
 
-# 🧠 System Architecture
+### 🧠 Hybrid Multi-Agent System
 
-The system follows an **event-driven AI architecture**.
+* Core agents (Planner, Router, Safety)
+* Dynamic agents (YAML-defined roles)
+* Autonomous agent loop (goal-driven execution)
+
+---
+
+### 🤖 Autonomous Agent Mode
+
+* Iterative reasoning (think → act → observe)
+* Tool generation
+* Code execution in sandbox
+* Multi-step workflow automation
+
+---
+
+### 🔎 Web Research Engine
+
+* Search → Fetch → Analyze → Summarize
+* Multi-source reasoning
+
+---
+
+### 💻 Code Development Mode
+
+* Generate code
+* Edit files
+* Execute scripts
+* Debug and iterate
+
+---
+
+### 🛠️ System Automation
+
+* Open applications
+* File operations
+* OS control (safe and permission-based)
+
+---
+
+### 🔐 Safety & Permissions
+
+* Explicit user approval required
+* Sandboxed execution
+* Full logging of actions
+
+---
+
+## 🧠 Architecture
 
 ```mermaid
 graph TD
 
-A[Microphone Input] --> B[Streaming Speech Recognition]
+A[Voice/CLI Input] --> B[Planner]
 
-B --> C[LLM Reasoning Engine]
+B --> C{Task Type}
 
-C --> D[Decision Engine]
+C -->|Simple| D[Tool Execution]
+C -->|Complex| E[Dynamic Agent]
+C -->|Autonomous| F[Autonomous Agent]
 
-D --> E[Tool Execution Layer]
+F --> G[Agent Loop]
+G --> H[Tool Generator]
+G --> I[Tool Executor]
 
-E --> F[OS Automation Tools]
+H --> J[Workspace Sandbox]
+I --> K[Safety + Permission]
 
-E --> G[Web Research Engine]
+K --> L[Execution]
+L --> G
 
-E --> H[Memory System]
-
-C --> I[Streaming Text To Speech]
-
-I --> J[Audio Response]
-
-```
-
-This architecture provides:
-
-• modular components
-• asynchronous processing
-• easy extensibility
-
----
-
-# ⚡ Low Latency Streaming Pipeline
-
-Traditional voice assistants run sequentially:
-
-```
-Speech → STT → LLM → TTS
-```
-
-VoiceOS uses a **parallel streaming pipeline**.
-
-```mermaid
-sequenceDiagram
-
-participant User
-participant STT
-participant LLM
-participant TTS
-participant Speaker
-
-User->>STT: Speak
-STT-->>LLM: Partial Transcript
-LLM-->>TTS: Token Stream
-TTS-->>Speaker: Speech Output
-
-```
-
-This pipeline enables responses to begin **before the full sentence is processed**.
-
-Average latency:
-
-```
-~600ms on CPU
+G --> M[Final Output]
+M --> N[TTS / CLI Output]
 ```
 
 ---
 
-# 🖼️ Demo (Add Your GIF Here)
+## ⚡ Execution Modes
 
-<p align="center">
-<img src="docs/demo.gif" width="800">
-</p>
+| Mode       | Description             |
+| ---------- | ----------------------- |
+| Simple     | Direct tool execution   |
+| Complex    | Dynamic agent execution |
+| Autonomous | Iterative agent loop    |
 
-Example interactions:
+---
+
+## 📂 Project Structure
 
 ```
-Open Chrome
-Search for reinforcement learning robotics
-Type hello world
-Summarize latest AI research
-Switch window
+VoiceOS/
+
+├── agents/                    # Multi-agent system
+│   ├── core/                 # Core agents (Planner, Router, Safety)
+│   ├── autonomous/           # Autonomous agent loop
+│   ├── dynamic/              # Dynamic agent roles
+│   └── roles/                # YAML-defined agent roles
+├── tools/                    # Native VoiceOS tools
+│   ├── file_tools/           # File operations
+│   ├── web_tools/            # Web browsing & scraping
+│   ├── code_tools/           # Code execution
+│   ├── document_tools/       # Document processing
+│   └── scheduler_tools/      # Task scheduling
+├── core/                     # Core system components (restructured)
+│   ├── config.py            # Configuration management
+│   ├── logger.py            # Logging system
+│   ├── event.py             # Event system
+│   ├── security.py          # Security system
+│   ├── orchestrator.py      # System orchestrator
+│   ├── config_manager.py    # Configuration manager
+│   ├── plugins/             # Plugin system (8 modules)
+│   │   ├── secure_plugin_integration.py
+│   │   ├── plugin_lifecycle.py
+│   │   ├── plugin_registry.py
+│   │   ├── plugin_configuration.py
+│   │   ├── plugin_error_handling.py
+│   │   ├── plugin_monitoring.py
+│   │   ├── plugin_testing.py
+│   │   └── complete_plugin_integration.py
+│   ├── helpers/             # Helper system (4 modules)
+│   │   ├── secure_helper_integration.py
+│   │   ├── helper_bridge_integration.py
+│   │   ├── helper_extension_discovery.py
+│   │   └── helper_extension_monitoring.py
+│   ├── extensions/          # Extension system (2 modules)
+│   │   ├── secure_extension_integration.py
+│   │   └── extension_point_system.py
+│   ├── integration/         # Integration framework (2 modules)
+│   │   ├── integration_patterns.py
+│   │   └── controlled_execution.py
+│   ├── monitoring/          # Monitoring system (2 modules)
+│   │   ├── performance_monitor.py
+│   │   └── error_recovery.py
+│   ├── events/              # Event system (3 modules)
+│   │   ├── event_bus.py
+│   │   ├── event_handlers.py
+│   │   └── events.py
+│   ├── cli/                 # CLI system (2 modules)
+│   │   ├── voice_cli_integration.py
+│   │   └── response_builder.py
+│   ├── pipelines/           # Pipeline system (1 module)
+│   │   └── stream_pipeline.py
+│   └── system/              # System management (2 modules)
+│       ├── system_verification.py
+│       └── unified_integration_dashboard.py
+├── permissions/              # Permission & safety system
+├── audio/                    # Voice processing
+├── llm/                      # LLM integration
+├── memory/                   # Memory management
+├── plugins/                  # Plugin system
+├── workspace/                # Workspace management
+├── frontend/                 # Web interface
+├── docs/                     # Documentation
+└── models/                   # AI models
 ```
 
 ---
 
-# 📂 Project Structure
+## � Core Integration Systems
 
-```
-voice-os
+VoiceOS features a **comprehensive integration framework** with restructured core components:
 
-backend
+### 🔌 Plugin System
+- **Secure Plugin Integration**: Security-first plugin loading and validation
+- **Plugin Lifecycle**: Complete plugin state management (DISCOVERED → ACTIVE → SUSPENDED)
+- **Plugin Registry**: Centralized plugin discovery and registration
+- **Plugin Configuration**: Multi-scope configuration management
+- **Plugin Error Handling**: Comprehensive error recovery and reporting
+- **Plugin Monitoring**: Real-time performance and health monitoring
+- **Plugin Testing**: Built-in security and compatibility testing
 
- core
-  event_bus.py
-  events.py
-  stream_pipeline.py
+### 🤝 Helper System
+- **Secure Helper Integration**: Categorized helper function management
+- **Helper Bridge Integration**: VoiceOS tool bridging with multiple modes
+- **Helper Extension Discovery**: Background discovery and validation
+- **Helper Extension Monitoring**: System-wide helper metrics
 
- stt
-  streaming_whisper.py
+### 🔗 Extension System
+- **Secure Extension Integration**: Extension type management and security
+- **Extension Point System**: Hook-based extension with decorators
+- **Extension Decorators**: Easy-to-use decorators for common extension points
+  - `@before_tool_execution`, `@after_tool_execution`
+  - `@before_llm_request`, `@after_llm_response`
+  - `@data_processing`, `@user_input_validation`
+  - `@error_handling`, `@logging_decorator`
 
- llm
-  streaming_llm.py
+### 📊 Integration Framework
+- **Integration Patterns**: Standardized integration approaches
+- **Controlled Execution**: Sandboxed execution with resource limits
+- **Performance Monitoring**: Real-time system performance tracking
+- **Error Recovery**: Automatic error detection and recovery
 
- tts
-  streaming_tts.py
+### 🎛️ Unified Dashboard
+- **Integration Dashboard**: Centralized management interface
+- **System Verification**: Automated system health checks
+- **Real-time Monitoring**: Live system metrics and status
 
- listener
-  backchannel_engine.py
+---
 
- interrupt
-  speech_state.py
-  tts_controller.py
+## �🐳 Docker Setup
 
- research
-  web_search.py
-  summarizer.py
-  analysis_engine.py
-
- tools
-  os_control
-
- model_manager
-  hardware_detector.py
-  model_registry.py
-  model_downloader.py
-  model_manager.py
-
-models
-
-README.md
-requirements.txt
+```bash
+docker build -t voiceos .
+docker run -it voiceos
 ```
 
 ---
 
-# 🧠 Model System
+## ▶️ Run Locally
 
-VoiceOS uses optimized local AI models.
-
-| Component          | Model                       |
-| ------------------ | --------------------------- |
-| Speech Recognition | Whisper Tiny                |
-| Reasoning          | Mistral 7B (GGUF Quantized) |
-| Speech Generation  | Coqui Tacotron              |
-
-The **Model Manager** automatically:
-
-• detects hardware
-• downloads models
-• selects optimal configuration
-
----
-
-# 💻 Installation
-
-### 1 Clone Repository
-
-```
-git clone https://github.com/yourusername/voice-os.git
-cd voice-os
-```
-
----
-
-### 2 Create Environment
-
-```
-python -m venv venv
-```
-
-Activate:
-
-Mac/Linux
-
-```
-source venv/bin/activate
-```
-
-Windows
-
-```
-venv\Scripts\activate
-```
-
----
-
-### 3 Install Dependencies
-
-```
+```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-Main libraries include:
+# Run VoiceOS
+python main.py
 
-```
-faster-whisper
-llama-cpp-python
-coqui-tts
-beautifulsoup4
-requests
-pyautogui
-psutil
+# Or with specific configuration
+VOICEOS_CONFIG=dev python main.py
 ```
 
 ---
 
-### 4 Run VoiceOS
+## 🧪 Example Commands
 
 ```
-python backend/main.py
-```
-
-First launch will:
-
-• detect hardware
-• download AI models
-• initialize system components
-
----
-
-# 🎤 Example Voice Commands
-
-```
-Open Chrome
-Search for latest reinforcement learning papers
-Type hello world
-Switch window
-Summarize today's AI news
+"Open Chrome"
+"Search latest AI research"
+"Write a Python script to scrape data"
+"Analyze this dataset"
+"Automate this workflow"
 ```
 
 ---
 
-# ⚙️ System Components
+## 🔐 Safety Model
 
-## Event Bus
-
-Central communication layer connecting all modules.
-
-Handles:
-
-• message routing
-• asynchronous events
-• module communication
-
----
-
-## LLM Decision Engine
-
-Interprets commands and generates structured actions.
-
-Example output:
+All actions follow:
 
 ```
-{
- intent: "open_application",
- tool: "os_open_app",
- parameters: {
-   app: "chrome"
- }
-}
+Agent → Safety → Permission → Execution
 ```
 
 ---
 
-## Tool Execution Layer
+## 🚀 Roadmap
 
-Executes safe system operations.
-
-Supported tools:
-
-OS automation
-Web research
-Clipboard management
-Keyboard control
-
----
-
-## Permission System
-
-Every OS action requires confirmation.
-
-This prevents:
-
-unsafe automation
-destructive commands
-malicious behavior
+- [x] Native VoiceOS tools integration
+- [x] Permission-based safety system
+- [x] Multi-agent execution modes
+- [ ] Advanced multi-agent collaboration
+- [ ] Enhanced GUI interface
+- [ ] Plugin marketplace
+- [ ] Distributed agent execution
+- [ ] Voice-controlled IDE integration
+- [ ] Real-time collaboration features
 
 ---
 
-# ⚡ Performance
+## 🤝 Contributing
 
-Typical CPU laptop performance:
-
-| Stage              | Latency |
-| ------------------ | ------- |
-| Speech detection   | 50ms    |
-| STT partial result | 200ms   |
-| LLM first token    | 300ms   |
-| TTS playback       | 200ms   |
-
-Total perceived latency:
-
-```
-~600ms
-```
+Contributions welcome.
 
 ---
 
-# 🚀 Future Roadmap
-
-Planned improvements:
-
-Multi-agent AI architecture
-Long-term memory graph
-Desktop GUI interface
-Autonomous task planning
-Distributed inference
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-Areas of interest:
-
-AI agents
-speech processing
-system design
-low latency inference
-
----
-
-# 📜 License
+## 📜 License
 
 MIT License
-
----
-
-# ⭐ Support
-
-If you find this project interesting:
-
-⭐ Star the repository
-🍴 Fork the project
-🚀 Build your own VoiceOS extensions
-
----
-
-<p align="center">
-Built with ❤️ for exploring the future of voice driven computing
-</p>
-
-<p align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0072ff,100:00c6ff&height=120&section=footer"/>
-</p>
