@@ -308,3 +308,9 @@ releases/
 *.status
 
 summary.md
+
+# Test files to ignore
+regex_test.py
+regex_test2.py
+test_input.txt
+test_llm.py

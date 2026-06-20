@@ -99,10 +99,10 @@ class SecurityValidator:
         
         # Allowed characters for different contexts
         self.allowed_chars = {
-            'text': r'a-zA-Z0-9\s.,!?;:()[]{}"-\'',
+            'text': r'a-zA-Z0-9\s.,!?;:()\[\]{}"-\'',
             'filename': r'a-zA-Z0-9._-',
             'path': r'a-zA-Z0-9/._-\\',
-            'json': r'a-zA-Z0-9\s.,!?;:()[]{}"\'"{}'
+            'json': r'a-zA-Z0-9\s.,!?;:()\[\]{}"\'{}'
         }
     
     def validate_input(self, input_data: str, context: str = "text", 
