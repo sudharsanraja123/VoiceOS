@@ -52,7 +52,7 @@ class Router:
             if session:
                 session.check_cancelled()
             if plan.type == TaskType.SIMPLE:
-                result = await self._route_simple_task(plan, user_input)
+                result = await self._route_simple_task(plan, user_input, session=session)
                 self.route_stats['simple_tasks'] += 1
                 execution_path = "direct_tool_execution"
             else:
@@ -82,7 +82,9 @@ class Router:
                 error=str(e)
             )
     
-    async def _route_simple_task(self, plan: TaskPlan, user_input: str) -> Any:
+    async def _route_simple_task(
+        self, plan: TaskPlan, user_input: str, session=None
+    ) -> Any:
         """
         Route simple tasks directly to tool execution
         """
